@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Menu.xhtml" PATH="/Menu.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Menu.xhtml:0" NAME="item" PATH="/Menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="QueryQuestions::#QueryQuestions.xhtml"
+    NAME="output" PATH="/QueryQuestions.xhtml"
+    TARGET="rules:#QueryQuestions.xhtml" TITLE="QueryQuestions" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="CreateQuestion::#CreateQuestion.xhtml"
+    NAME="output1" PATH="/CreateQuestion.xhtml"
+    TARGET="rules:#CreateQuestion.xhtml" TITLE="CreateQuestion" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#QueryQuestions.xhtml"
+  PATH="/QueryQuestions.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#QueryQuestions.xhtml:0" NAME="item"
+   PATH="/QueryQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Menu::#Menu.xhtml" NAME="output"
+    PATH="/Menu.xhtml" TARGET="rules:#Menu.xhtml" TITLE="Menu" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#CreateQuestion.xhtml"
+  PATH="/CreateQuestion.xhtml" SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#CreateQuestion.xhtml:0" NAME="item"
+   PATH="/CreateQuestion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Menu::#Menu.xhtml" NAME="output"
+    PATH="/Menu.xhtml" TARGET="rules:#Menu.xhtml" TITLE="Menu" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:head>
+		<title>JavaServer Faces aplikazioa</title>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				font-family: 'Arial', sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+
+			.container {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				width: 500px;
+				margin-top: 50px;
+			}
+
+			h3 {
+				color: #000;
+				text-align: center;
+				margin-bottom: 15px;
+			}
+
+			h5 {
+				color: #555;
+			}
+
+			#aukeratua {
+				color: red;
+				font-weight: bold;
+			}
+
+			.button {
+				background-color: #3498db;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				cursor: pointer;
+				border-radius: 4px;
+				margin-top: 10px;
+			}
+
+			#mezuak {
+				color: blue;
+				text-align: center;
+				margin-top: 10px;
+			}
+
+			table {
+				width: 100%;
+				margin-bottom: 15px;
+			}
+
+			table td {
+				padding: 8px;
+			}
+		</style>
+	</h:head>
+	<h:body>
+		<div class="container">
+			<h:form id='nireForm'>
+				<h3>Create Question</h3>
+				<table align="center">
+
+					<tr>
+						<td>
+							<h5>Eguna aukeratu</h5> <p:calendar id="data"
+								value="#{questionBean.eguna}" navigator="true" mode="inline">
+								<p:ajax event="dateSelect"
+									listener="#{questionBean.onDateSelect}"
+									update="mezuak eventTable"></p:ajax>
+							</p:calendar>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h5>Event</h5>
+							<p:dataTable id="eventTable" value="#{questionBean.eventList}"
+								var="item" selectionMode="single"
+								selection="#{questionBean.event}" border="1"
+								rowKey="#{item.eventNumber}">
+
+								<p:column headerText="Event#">#{item.eventNumber}</p:column>
+								<p:column headerText="Event">#{item.description}</p:column>
+								<p:ajax event="rowSelect"
+									listener="#{questionBean.onEventSelect}"
+									update=":nireForm:mezuak"></p:ajax>
+							</p:dataTable>
+						</td>
+						<td><h:outputText id="aukeratua" value="#{questionBean.event}"
+								style="color:red" /></td>
+					</tr>
+					<tr>
+						<td><h5>Question Description</h5></td>
+						<td><h:inputText id="question"
+								value="#{questionBean.questionDesctiption}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h5>Gutxieneko diru kopurua:</h5></td>
+						<td><h:inputText id="minBet"
+								value="#{questionBean.minimumBet}"></h:inputText></td>
+
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<h:commandButton class="button" value="Onartu"
+								action="#{questionBean.addQuestion}"
+								update=":nireForm:mezuak :nireForm:eventTable :nireForm:data">
+							</h:commandButton>
+						</td>
+					</tr>
+				</table>
+				<h:messages id="mezuak"/>
+				<h:button value="Back" outcome="/Menu.xhtml" />
+			</h:form>
+		</div>
+	</h:body>
+</f:view>
+</html>

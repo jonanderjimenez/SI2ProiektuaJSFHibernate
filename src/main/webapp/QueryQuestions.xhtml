@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:head>
+		<title>JavaServer Faces aplikazioa</title>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				font-family: 'Arial', sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+
+			.container {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				width: 500px;
+			}
+
+			h3 {
+				color: #000;
+				text-align: center;
+				margin-bottom: 15px;
+			}
+
+			table {
+				width: 100%;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+
+			table td {
+				padding: 8px;
+			}
+
+			#mezuak {
+				color: red;
+				text-align: center;
+				margin-top: 10px;
+			}
+		</style>
+	</h:head>
+	<h:body>
+		<div class="container">
+			<h:form id='nireForm'>
+				<h3>Query Question</h3>
+				<table align="center">
+					<tr>
+						<td>
+							<h3>Egutegia</h3>
+							<p:calendar id="data" value="#{questionBean.eguna}" navigator="true" mode="inline">
+								<p:ajax event="dateSelect" listener="#{questionBean.onDateSelect}" update=":nireForm:eventTable :nireForm:questionTable"></p:ajax>
+							</p:calendar>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>Events</h3>
+							<p:dataTable id="eventTable" value="#{questionBean.eventList}" var="item" selectionMode="single" selection="#{questionBean.event}" border="1" rowKey="#{item.eventNumber}">
+								<p:column headerText="Event#">#{item.eventNumber}</p:column>
+								<p:column headerText="Event">#{item.description}</p:column>
+								<p:ajax event="rowSelect" listener="#{questionBean.onEventSelect}" update=":nireForm:questionTable"></p:ajax>
+							</p:dataTable>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>Questions</h3>
+							<p:dataTable id="questionTable" value="#{questionBean.event.questions}" var="item" selectionMode="single" selection="#{eventList.question}" border="1" rowKey="#{item.questionNumber}">
+								<p:column headerText="Question#">#{item.questionNumber}</p:column>
+								<p:column headerText="Question">#{item.question}</p:column>
+							</p:dataTable>
+						</td>
+					</tr>
+				</table>
+				<h:messages id="mezuak" style="color:red" />
+				<h:button value="Back" outcome="/Menu.xhtml" />
+			</h:form>
+		</div>
+	</h:body>
+</f:view>
+</html>

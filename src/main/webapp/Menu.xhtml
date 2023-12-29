@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>JavaServer Faces aplikazioa</title>
+	<style>
+		body {
+			background-color: #e0e0e0;
+			display: flex;
+			justify-content: center;
+			align-items: center; /* Center vertically */
+			height: 100vh;
+			margin: 0;
+		}
+
+		.container {
+			text-align: center;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h3 {
+			color: #333;
+		}
+	</style>
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form>
+			<h3>Mesedez, aukeratu ekintza:</h3>
+			<p>
+				<h:commandButton value="Query Question" action="QueryQuestions.xhtml" />
+			</p>
+			<p>
+				<h:commandButton value="Create Question" action="CreateQuestion.xhtml" />
+			</p>
+			<p>
+				<h:commandButton value="Show All Events" action="showEvent.xhtml" />
+			</p>
+		</h:form>
+	</div>
+</h:body>
+</html>

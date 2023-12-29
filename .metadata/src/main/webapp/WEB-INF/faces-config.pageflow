@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf17005704569500" configfile="/BetsproiektuaJSF/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="CreateQuestion.xhtml" x="397" y="396" id="pf17006664627690" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf17023990363373" inlinks="pf17006664627691" path="/CreateQuestion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Menu.xhtml" x="206" y="291" id="pf17006664627692" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf17006664627693 pf17006664627691 pf17032507605910" inlinks="pf17023989705060 pf17023990363373 pf17032542161873" path="/Menu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="QueryQuestions.xhtml" x="396" y="168" id="pf17006664627704" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf17023989705060" inlinks="pf17006664627693" path="/QueryQuestions.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showEvent.xhtml" id="pf17032507605911" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf17032542161873" inlinks="pf17032507605910" path="/showEvent.xhtml"/>
+  <links id="pf17006664627693" target="pf17006664627704" source="pf17006664627692" outcome="QueryQuestions"/>
+  <links id="pf17006664627691" target="pf17006664627690" source="pf17006664627692" outcome="CreateQuestion"/>
+  <links id="pf17023989705060" target="pf17006664627692" source="pf17006664627704" outcome="Menu"/>
+  <links id="pf17023990363373" target="pf17006664627692" source="pf17006664627690" outcome="Menu"/>
+  <links id="pf17032507605910" target="pf17032507605911" source="pf17006664627692" outcome="showEvent"/>
+  <links id="pf17032542161873" target="pf17006664627692" source="pf17032507605911" outcome="Menu"/>
+</pageflow:Pageflow>
